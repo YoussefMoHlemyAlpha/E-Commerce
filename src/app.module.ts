@@ -1,4 +1,4 @@
-import { Module } from "@nestjs/common";
+import { MiddlewareConsumer, Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigModule } from "@nestjs/config";
@@ -6,8 +6,8 @@ import { AuthController } from "./auth/auth.controller";
 import { AuthService } from "./auth/auth.service";
 import { AuthModule } from "./auth/auth.module";
 import { MongooseModule } from "@nestjs/mongoose";
-
-
+import { NestModule } from "@nestjs/common";
+import { logger } from "./common/middlewares/logger.middleware";
 @Module({
   imports: [ConfigModule.forRoot({
     envFilePath:"config/.env.dev"
@@ -24,4 +24,10 @@ MongooseModule.forRoot(process.env.DB_Url as string, {
   },
 })],
 })
-export class AppModule {}
+export class AppModule implements NestModule{
+ configure(consumer: MiddlewareConsumer) {
+   consumer
+     .apply(logger)
+     .forRoutes('/auth/login');
+ }
+}

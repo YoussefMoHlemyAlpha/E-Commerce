@@ -1,9 +1,11 @@
-import { Body, Controller, Get, ParseIntPipe, Post, Query, UsePipes, ValidationPipe } from "@nestjs/common";
+import { Body, Controller, Get, ParseIntPipe, Post, Query, Req, UseGuards, UseInterceptors, UsePipes, ValidationPipe } from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { ZodValidation } from "src/common/pipes/zod.pip";
 import { loginSchema, signUpSchema } from "./authValidation/signup.zod";
 import { checkPassword } from "src/common/pipes/auth.pipe";
 import type{ loginDTO, signUpDTO } from "./auth-DTO/auth.dto";
+import { AuthGards, type AuthRequest } from "src/common/guards/auth.guards";
+import { AuthInterceptor } from "src/interceptors/logger.interceptor";
 
 @Controller('/auth')
 export class AuthController{
@@ -21,6 +23,15 @@ constructor(private readonly authService:AuthService){}
    return await this.authService.login(data)
   }
 
+  @Post('/me')
+  @UseGuards(AuthGards)
+  @UseInterceptors(AuthInterceptor)
+  async test(@Req() req:AuthRequest){
+   return {
+    message:"success",
+    data:req.user
+   }
+  }
 
 }
 
