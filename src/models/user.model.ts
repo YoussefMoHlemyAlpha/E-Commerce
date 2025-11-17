@@ -1,11 +1,14 @@
 import { MongooseModule, Prop, Schema, SchemaFactory, Virtual } from "@nestjs/mongoose";
 import { signUpDTO } from "src/auth/auth-DTO/auth.dto";
-
+import { IUser } from "src/types/user.type";
+import { Gender,type Iotp,Role,Provider } from "src/types/user.type";
+import { createHash } from "src/common/utils/hash";
+import { hashSync } from "bcrypt";
 @Schema({
     timestamps:true
 })
 
-export class User{
+export class User implements IUser {
 
     @Virtual({
         get:function(this:signUpDTO){
@@ -20,7 +23,6 @@ export class User{
     userName:String
     @Prop({
         type:String,
-        required:true,
         max:50,
         min:3
     })
@@ -43,6 +45,9 @@ export class User{
 
         @Prop({
         type:String,
+        set:function(value:string){
+              return hashSync(value, Number(process.env.SALT_ROUNDS));
+        },
         required:true,
          min:3,
          max:20
@@ -56,6 +61,52 @@ export class User{
          max:20
     })
     confirmPassword:string
+
+    @Prop({
+        type:String,
+        required:true,
+         min:3,
+         max:20
+    })
+    phone:string
+
+    @Prop({
+        type:Number,
+         min:3,
+         max:20
+    })
+    age:number
+
+    @Prop({
+        type:String,
+        enum:Object.values(Gender),
+         min:3,
+         max:20
+    })
+    gender:Gender
+
+    @Prop({
+        type:String,
+        enum:Object.values(Role),
+         min:3,
+         max:20
+    })
+    role:Role
+
+    @Prop({
+        type:String,
+        enum:Object.values(Provider),
+         min:3,
+         max:20
+    })
+    provider:Provider
+
+    @Prop({
+        type:Object,
+         min:3,
+         max:20
+    })
+    emailOtp:Iotp
 }
 
 export const userSchema=SchemaFactory.createForClass(User);

@@ -12,7 +12,7 @@ import { MongooseModule } from "@nestjs/mongoose";
   imports: [ConfigModule.forRoot({
     envFilePath:"config/.env.dev"
 }),AuthModule, 
-MongooseModule.forRoot("mongodb://localhost/ecommerce", {
+MongooseModule.forRoot(process.env.DB_Url as string, {
   onConnectionCreate: (connection) => {
     connection.on('connected', () => console.log('connected'));
     connection.on('open', () => console.log('open'));
