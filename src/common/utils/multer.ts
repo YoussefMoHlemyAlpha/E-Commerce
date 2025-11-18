@@ -5,7 +5,7 @@ import { diskStorage } from "multer"
 
 export const multerOptions=(destination:string)=>{
     const storage=diskStorage({
-        destination:'./src/uploads/brands',
+        destination,
         filename:(req,file,cb)=>{
             const uniqueFilename=Date.now()+"-"+file.originalname;
             cb(null,uniqueFilename)
