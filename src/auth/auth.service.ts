@@ -31,7 +31,7 @@ export class AuthService{
         throw new BadRequestException("User not found")
     }
     const accessToken=this.JwtService.sign({id:user._id},{secret:process.env.JWT_SECRET})
-    return {accessToken}
+    return {data:accessToken}
   }
 
 }
