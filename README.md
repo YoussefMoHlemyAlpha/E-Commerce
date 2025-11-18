@@ -78,7 +78,7 @@ Submit a pull request 🚀
 This project is licensed under the MIT License — feel free to use and modify it for your own learning and development.
 
 ### 💬 Contact
-👤 Author: Youssef MoHlemy
+👤 Author: Youssef Mo Helmy
 
 📧 Email:youssefhelmy4444@gmail.com
 
