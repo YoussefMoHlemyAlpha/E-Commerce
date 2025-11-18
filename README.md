@@ -1,7 +1,12 @@
 # 🛍️ E-Commerce Platform
 
-A modern, full-featured **E-Commerce web application** built to provide a smooth and scalable online shopping experience.  
-This project demonstrates how to build a complete e-commerce system — from user authentication and product management to cart functionality and order processing. 🚀
+This E-Commerce Platform is a modern, scalable web application built using NestJS for the backend, MongoDB for data persistence, and JWT (JSON Web Tokens) for secure user authentication.
+
+It provides a complete foundation for any online store, featuring user registration and login, product management, cart and order functionality, and role-based access control.
+
+The backend API is fully RESTful and designed following clean architectural principles — ensuring maintainability, modularity, and high performance.
+
+Built with developer experience in mind, this project showcases how to structure and implement real-world e-commerce logic using NestJS and MongoDB, while keeping security and scalability as top priorities. 🚀
 
 > **Status:** 🚧 _This project is under active development. Features, APIs, and structure are subject to change._
 ---
