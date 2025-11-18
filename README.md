@@ -3,6 +3,7 @@
 A modern, full-featured **E-Commerce web application** built to provide a smooth and scalable online shopping experience.  
 This project demonstrates how to build a complete e-commerce system — from user authentication and product management to cart functionality and order processing. 🚀
 
+> **Status:** 🚧 _This project is under active development. Features, APIs, and structure are subject to change._
 ---
 
 ## ✨ Features
