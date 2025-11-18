@@ -8,6 +8,7 @@ import { AuthModule } from "./auth/auth.module";
 import { MongooseModule } from "@nestjs/mongoose";
 import { NestModule } from "@nestjs/common";
 import { logger } from "./common/middlewares/logger.middleware";
+import { BrandModule } from './brand/brand.module';
 @Module({
   imports: [ConfigModule.forRoot({
     envFilePath:"config/.env.dev"
@@ -22,7 +23,7 @@ MongooseModule.forRoot(process.env.DB_Url as string, {
 
     return connection;
   },
-})],
+}), BrandModule],
 })
 export class AppModule implements NestModule{
  configure(consumer: MiddlewareConsumer) {

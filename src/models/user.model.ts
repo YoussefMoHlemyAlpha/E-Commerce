@@ -111,4 +111,4 @@ export class User implements IUser {
 
 export const userSchema=SchemaFactory.createForClass(User);
 
-
+export const UserModel=MongooseModule.forFeature([{name:User.name,schema:userSchema}])
