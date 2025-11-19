@@ -26,7 +26,7 @@ async getCart(userId:Types.ObjectId){
 
 async addCart({userId,product,quantity}:{userId:Types.ObjectId , quantity:number , product:Types.ObjectId}){
    const IsExistProduct=await this.ProductModel.findOne({_id:product,stock:{$gte:quantity}})
-    if(!product){
+    if(!IsExistProduct){
         throw new NotFoundException("Product not found")
     }
 

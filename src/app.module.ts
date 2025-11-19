@@ -12,6 +12,7 @@ import { BrandModule } from './brand/brand.module';
 import { CategoryModule } from './category/category.module';
 import { ProductModule } from './product/product.module';
 import { CartModule } from './cart/cart.module';
+import { OrderModule } from './order/order.module';
 @Module({
   imports: [ConfigModule.forRoot({
     envFilePath:"config/.env.dev"
@@ -26,7 +27,7 @@ MongooseModule.forRoot(process.env.DB_Url as string, {
 
     return connection;
   },
-}), BrandModule, CategoryModule, ProductModule, CartModule],
+}), BrandModule, CategoryModule, ProductModule, CartModule, OrderModule],
 })
 export class AppModule implements NestModule{
  configure(consumer: MiddlewareConsumer) {
