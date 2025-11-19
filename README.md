@@ -49,7 +49,7 @@ Built with developer experience in mind, this project showcases how to structure
 | **Backend** | Node.js / Nest.js |
 | **Database** | MongoDB  |
 | **Authentication** | JWT  |
-| **Payment** | Stripe|
+
 
 
 ---
